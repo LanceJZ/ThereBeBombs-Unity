@@ -164,6 +164,9 @@ DocProject/Help/html
 # Click-Once directory
 publish/
 
+# Unity files
+Temp/UnityLockfile
+
 # Publish Web Output
 *.[Pp]ublish.xml
 *.azurePubxml
