@@ -166,6 +166,7 @@ publish/
 
 # Unity files
 Temp/UnityLockfile
+Temp/
 
 # Publish Web Output
 *.[Pp]ublish.xml

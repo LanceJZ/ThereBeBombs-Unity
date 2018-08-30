@@ -15,13 +15,13 @@ With the "Free Look" and "Multipurpose" camera, the rig is designed so the root 
 
 A typical set up for this would be to have the Y positional value of the Pivot set to 2 (for 2 meters above the target), and the Z positional value of the Camera set to -6 (for 6 meters behind the pivot).
 
-If you wanted to adjust the camera to be to one side of the target (eg, for a closer over-shoulder third person view), you should adjust the X position value of the Pivot object. 
+If you wanted to adjust the camera to be to one side of the target (eg, for a closer over-shoulder third person view), you should adjust the X position value of the Pivot object.
 
 Camera Rig			<- position will move towards target.
 	Pivot			<- adjust Y position for height, X position for horizontal offset
 		Camera		<- adjust Z position for distance away from target
 
-		
+
 Both the "Free Look" and the "Multipurpose" camera also use the ProtectCameraFromWallClip script, which is intended to stop the camera from passing through items of scenery, as can happen if a character or vehicle targeted by the camera is backed up against a wall.
 
 The ProtectCameraFromWallClip script examines the distance between the Pivot and the Camera, and attempts to preserve this where possible, but draws the camera in closer to the pivot when colliders are detected. For this reason, if you're using the wall clip script, you can't modify the local offset of the Camera at runtime, because it's being set every frame by the clip protection script.
