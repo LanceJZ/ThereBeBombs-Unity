@@ -3,43 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CameraRaycaster))]
-public class CursorAffordance : MonoBehaviour {
 
-	[SerializeField] Texture2D WalkCursor = null;
-	[SerializeField] Texture2D TargetCursor = null;
-	[SerializeField] Texture2D UnknownCursor = null;
-	[SerializeField] Vector2 CursorHotspot = new Vector2(96, 96);
+public class CursorAffordance : MonoBehaviour
+{
 
-	CameraRaycaster Raycaster;
+	[SerializeField] Texture2D WalkCursor;
+	[SerializeField] Texture2D TargetCursor;
+	[SerializeField] Texture2D UnknownCursor;
+	[SerializeField] Vector2 CursorHotspot = new Vector2(0, 0);
+
+	public const int WalkableLayerNumber = 8;
+	public const int EnemyLayerNumber = 9;
+    public const int WallLayer = 10;
+    public const int ObjectLayer = 11;
+    public const int CorpseLayer = 12;
+
+    CameraRaycaster cameraRaycaster;
 
 	// Use this for initialization
 	void Start ()
 	{
-		Raycaster = GetComponent<CameraRaycaster>();
-		Raycaster.LayerChange += OnLayerChanged; // registering
+		cameraRaycaster = GetComponent<CameraRaycaster>();
+		cameraRaycaster.NotifyLayerChangeObservers += OnLayerChanged; // registering
 	}
 
-	void OnLayerChanged(Layer newLayer)
+	void OnLayerChanged(int newLayer)
 	{
 		switch (newLayer)
 		{
-			case Layer.Walkable:
+			case WalkableLayerNumber:
 				Cursor.SetCursor(WalkCursor, CursorHotspot, CursorMode.Auto);
 				break;
-			case Layer.Enemy:
+			case EnemyLayerNumber:
 				Cursor.SetCursor(TargetCursor, CursorHotspot, CursorMode.Auto);
 				break;
-			case Layer.Wall:
-				Cursor.SetCursor(UnknownCursor, CursorHotspot, CursorMode.Auto);
-				break;
-			case Layer.RaycastEndStop:
-				Cursor.SetCursor(UnknownCursor, CursorHotspot, CursorMode.Auto);
-				break;
 			default:
-				Debug.LogError("Don't know what cursor to show");
+				Cursor.SetCursor(UnknownCursor, CursorHotspot, CursorMode.Auto);
 				return;
 		}
 	}
-
-	// TODO consider de-registering OnLayerChanged on leaving all game scenes
 }

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 722eedb627747c54c88cf0c96d67bebb
+labels:
+- Ray
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - gameCanvasPrefab: {fileID: 1653876244793134, guid: 75a43cca039264395b99698681e52275,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
