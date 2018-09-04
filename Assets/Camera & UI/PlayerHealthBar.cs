@@ -23,7 +23,7 @@ public class PlayerHealthBar : MonoBehaviour
 
     }
 
-    void OnHealthChange(float currentHealth)
+    void OnHealthChange(float currentHealthPercent)
     {
         float xValue = -(ThePlayer.HealthAsPercentage / 2.0f) - 0.5f;
         HealthBarRawImage.uvRect = new Rect(xValue, 0.0f, 0.5f, 1.0f);

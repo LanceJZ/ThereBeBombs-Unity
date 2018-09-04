@@ -4,20 +4,19 @@
 [CustomEditor(typeof(CameraRaycaster))]
 public class CameraRaycasterEditor : Editor
 {
-    bool isLayerPrioritiesUnfolded = true; // store the UI state
+    bool IsLayerPrioritiesUnfolded = true; // store the UI state
+    string PropertiesName = "layerPriorities"; //First litter must be lowercase.
 
     public override void OnInspectorGUI()
     {
         serializedObject.Update(); // Serialize cameraRaycaster instance
+        IsLayerPrioritiesUnfolded = EditorGUILayout.Foldout(IsLayerPrioritiesUnfolded, "Layer Priorities");
 
-        isLayerPrioritiesUnfolded = EditorGUILayout.Foldout(isLayerPrioritiesUnfolded, "Layer Priorities");
-        if (isLayerPrioritiesUnfolded)
+        if (IsLayerPrioritiesUnfolded)
         {
             EditorGUI.indentLevel++;
-            {
-                BindArraySize();
-                BindArrayElements();
-            }
+            BindArraySize();
+            BindArrayElements();
             EditorGUI.indentLevel--;
         }
 
@@ -26,21 +25,25 @@ public class CameraRaycasterEditor : Editor
 
     void BindArraySize()
     {
-        int currentArraySize = serializedObject.FindProperty("layerPriorities.Array.size").intValue;
+        string layerSize = PropertiesName + ".Array.size";
+        int currentArraySize = serializedObject.FindProperty(layerSize).intValue;
         int requiredArraySize = EditorGUILayout.IntField("Size", currentArraySize);
 
         if (requiredArraySize != currentArraySize)
         {
-            serializedObject.FindProperty("layerPriorities.Array.size").intValue = requiredArraySize;
+            serializedObject.FindProperty(layerSize).intValue = requiredArraySize;
         }
     }
 
     void BindArrayElements()
     {
-        int currentArraySize = serializedObject.FindProperty("layerPriorities.Array.size").intValue;
+        string layerSize = PropertiesName + ".Array.size";
+        int currentArraySize = serializedObject.FindProperty(layerSize).intValue;
+
         for (int i = 0; i < currentArraySize; i++)
         {
-            var prop = serializedObject.FindProperty(string.Format("layerPriorities.Array.data[{0}]", i));
+            string findprop = PropertiesName + ".Array.data[{0}]";
+            SerializedProperty prop = serializedObject.FindProperty(string.Format(findprop, i));
             prop.intValue = EditorGUILayout.LayerField(string.Format("Layer {0}:", i), prop.intValue);
         }
     }

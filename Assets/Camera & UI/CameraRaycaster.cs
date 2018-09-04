@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class CameraRaycaster : MonoBehaviour
 {
 	// INSPECTOR PROPERTIES RENDERED BY CUSTOM EDITOR SCRIPT
-	[SerializeField] int[] layerPriorities; //This name is hard coded in CameraRaycasterEditor.cs
+	[SerializeField] int[] layerPriorities; //This name is hard coded in CameraRaycasterEditor.cs First letter must be lowercase.
 
 	float MaxRaycastDepth = 100f; // Hard coded value
 	int TopPriorityLayerLastFrame = -1; // So get ? from start with Default layer terrain

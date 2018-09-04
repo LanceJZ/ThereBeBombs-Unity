@@ -5,9 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(MyCameraRaycaster))]
 public class MyCursorAffordance : MonoBehaviour {
 
-	[SerializeField] Texture2D WalkCursor = null;
-	[SerializeField] Texture2D TargetCursor = null;
-	[SerializeField] Texture2D UnknownCursor = null;
+	[SerializeField] Texture2D WalkCursor;
+	[SerializeField] Texture2D TargetCursor;
+	[SerializeField] Texture2D UnknownCursor;
 	[SerializeField] Vector2 CursorHotspot = new Vector2(96, 96);
 
 	MyCameraRaycaster Raycaster;

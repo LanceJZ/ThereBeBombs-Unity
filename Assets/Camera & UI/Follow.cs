@@ -12,7 +12,6 @@ public class Follow : MonoBehaviour
 	void Start ()
 	{
 		ThePlayer = GameObject.FindGameObjectWithTag("Player");
-		TheLookat = FindObjectOfType<Lookat>();
 	}
 
 	void LateUpdate ()
@@ -33,7 +32,6 @@ public class Follow : MonoBehaviour
 		if (cameraRotated)
 		{
 			transform.rotation = Quaternion.Euler(0, TurnAmount, 0);
-			TheLookat.UpdateLookat(ThePlayer.transform.position);
 		}
 
 		transform.position = ThePlayer.transform.position;

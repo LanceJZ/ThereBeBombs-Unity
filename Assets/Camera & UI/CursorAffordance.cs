@@ -14,11 +14,11 @@ public class CursorAffordance : MonoBehaviour
 
 	public const int WalkableLayerNumber = 8;
 	public const int EnemyLayerNumber = 9;
-    public const int WallLayer = 10;
-    public const int ObjectLayer = 11;
-    public const int CorpseLayer = 12;
+	public const int WallLayer = 10;
+	public const int ObjectLayer = 11;
+	public const int CorpseLayer = 12;
 
-    CameraRaycaster cameraRaycaster;
+	CameraRaycaster cameraRaycaster;
 
 	// Use this for initialization
 	void Start ()

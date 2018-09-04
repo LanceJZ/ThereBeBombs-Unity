@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamagable
 {
 	[SerializeField] public int Health = 20; // For testing.
 	[SerializeField] public int HealthMax = 20; //For testing.
@@ -14,14 +14,9 @@ public class Player : MonoBehaviour
 	{
 		get
 		{
-			float healthPercent = CurrentHealth / (float)MaxHealth;
-			return healthPercent;
+			return Health / (float)HealthMax;
 		}
 	}
-
-	int LastHealth;
-	int CurrentHealth = 20;
-	int MaxHealth = 20;
 
 	void Start ()
 	{
@@ -30,13 +25,12 @@ public class Player : MonoBehaviour
 
 	void Update ()
 	{
-		CurrentHealth = Health; //For testing.
-		MaxHealth = HealthMax; //For testing.
 
-		if (LastHealth != CurrentHealth)
-		{
-			HealthChange(CurrentHealth);
-			LastHealth = CurrentHealth;
-		}
-	}
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Health = (int)Mathf.Clamp((float)Health - damage, 0, HealthMax);
+        HealthChange(Health);
+    }
 }
