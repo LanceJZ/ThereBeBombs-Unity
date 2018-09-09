@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class Timer : MonoBehaviour
+public class Timer
 {
     float timerAmount;
     float timerTime;

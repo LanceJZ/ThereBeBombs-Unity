@@ -4,17 +4,24 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(RawImage))]
-public class EnemyHealthBar : MonoBehaviour
+public class NPC_HealthBar : MonoBehaviour
 {
     RawImage HealthBarRawImage;
     Enemy TheEnemy;
+    Follower TheFollower;
 
     // Use this for initialization
     void Start()
     {
         TheEnemy = GetComponentInParent<Enemy>();
+        TheFollower = GetComponentInParent<Follower>();
         HealthBarRawImage = GetComponent<RawImage>();
-        TheEnemy.HealthChange += OnHealthChange;
+
+        if (TheEnemy)
+            TheEnemy.HealthChange += OnHealthChange;
+
+        if (TheFollower)
+            TheFollower.HealthChange += OnHealthChange;
     }
 
     // Update is called once per frame

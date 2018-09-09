@@ -5,24 +5,26 @@ using UnityStandardAssets.Characters.ThirdPerson;
 
 public class Enemy : MonoBehaviour, IDamagable
 {
-	[SerializeField] int Health = 10;
 	[SerializeField] int HealthMax = 10;
     [SerializeField] int DamagePerAttack = 2;
-	[SerializeField] float AttackRadius = 2;
+	[SerializeField] float MeleeAttackRadius = 2;
     [SerializeField] float RangeAttackRadius = 16;
     [SerializeField] float DetectRadius = 5;
     [SerializeField] float ChaseRadius = 20;
     [SerializeField] bool HasRangedAttack;
+    [SerializeField] float FireCooldown = 1;
     [SerializeField] GameObject Projectile;
+    [SerializeField] Vector3 AimOffset = new Vector3(0, 1, 0);
 
 	public delegate void OnHealthChange(float healthChange);
 	public event OnHealthChange HealthChange;
 
     Timer ShotTimer;
-	ThirdPersonCharacter TPCaracter;
+	//ThirdPersonCharacter TPCaracter;
 	AICharacterControl AIControl;
 	GameObject ThePlayer;
     Transform SpawnPoint;
+	int Health;
     bool PlayerSighted;
 
 	public float HealthAsPercentage
@@ -35,12 +37,13 @@ public class Enemy : MonoBehaviour, IDamagable
 
 	void Start ()
 	{
+        Health = HealthMax;
 		ThePlayer = GameObject.FindGameObjectWithTag("Player");
-		TPCaracter = GetComponent<ThirdPersonCharacter>();
+		//TPCaracter = GetComponent<ThirdPersonCharacter>();
 		AIControl = GetComponent<AICharacterControl>();
         SpawnPoint = transform.Find("ProjectileSpawnPoint");
 
-        ShotTimer = new Timer(1);
+        ShotTimer = new Timer(FireCooldown);
     }
 
     void Update ()
@@ -61,7 +64,8 @@ public class Enemy : MonoBehaviour, IDamagable
                 {
                     print("Enemy shots projectile!");
                     GameObject shot = Instantiate(Projectile);
-                    shot.GetComponent<Projectile>().Fire(SpawnPoint.position, ThePlayer.transform.position, DamagePerAttack);
+                    shot.GetComponent<Projectile>().Fire(SpawnPoint.position,
+                        ThePlayer.transform.position + AimOffset, DamagePerAttack);
                     AIControl.SetTarget(transform);
                     ShotTimer.Reset();
                 }
@@ -73,7 +77,7 @@ public class Enemy : MonoBehaviour, IDamagable
                     AIControl.SetTarget(ThePlayer.transform);
                 }
 
-                if (distToPlayer <= DetectRadius && distToPlayer >= AttackRadius)
+                if (distToPlayer <= DetectRadius && distToPlayer >= MeleeAttackRadius)
                 {
                     print("Enemy spots player!");
                     AIControl.SetTarget(ThePlayer.transform);
@@ -97,7 +101,7 @@ public class Enemy : MonoBehaviour, IDamagable
             }
         }
 
-        if (distToPlayer <= AttackRadius)
+        if (distToPlayer <= MeleeAttackRadius)
         {
             print("Enemy melee attacks Player!");
             AIControl.SetTarget(transform);
@@ -108,6 +112,11 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         Health = (int)Mathf.Clamp((float)Health - damage, 0, HealthMax);
         HealthChange(Health);
+
+        if (Health < 1)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnDrawGizmos()
@@ -127,7 +136,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
         //Draw Melee attack sphere.
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, AttackRadius);
+        Gizmos.DrawWireSphere(transform.position, MeleeAttackRadius);
 
         //Draw Range attack sphere.
         Gizmos.color = Color.cyan;

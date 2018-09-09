@@ -3,7 +3,7 @@
 // Add a UI Socket transform to your enemy
 // Attach this script to the socket
 // Link to a canvas prefab
-public class EnemyUI : MonoBehaviour
+public class NPC_UI : MonoBehaviour
 {
     // Work around for Unity 2018's lack of nested prefabs
     [Tooltip("The UI canvas prefab")]

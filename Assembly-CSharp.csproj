@@ -69,8 +69,9 @@
     <Compile Include="Assets\Camera &amp; UI\MyCursorAffordance.cs" />
     <Compile Include="Assets\Camera &amp; UI\PlayerHealthBar.cs" />
     <Compile Include="Assets\Characters\Enemies\Enemy.cs" />
-    <Compile Include="Assets\Characters\Enemies\EnemyHealthBar.cs" />
-    <Compile Include="Assets\Characters\Enemies\EnemyUI.cs" />
+    <Compile Include="Assets\Characters\NPC_HealthBar.cs" />
+    <Compile Include="Assets\Characters\NPC_UI.cs" />
+    <Compile Include="Assets\Characters\Player\Follower.cs" />
     <Compile Include="Assets\Characters\Player\MyPlayerMovement.cs" />
     <Compile Include="Assets\Characters\Player\Player.cs" />
     <Compile Include="Assets\Characters\Projectile.cs" />
