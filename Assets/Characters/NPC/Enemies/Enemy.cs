@@ -7,13 +7,13 @@ public class Enemy : MonoBehaviour, IDamagable
 {
 	[SerializeField] int HealthMax = 10;
 	[SerializeField] int DamagePerMeleeAttack = 2;
-	[SerializeField] int DamagePerRangeAttack = 4;
 	[SerializeField] float MeleeAttackRadius = 2;
-	[SerializeField] float RangeAttackRadius = 16;
 	[SerializeField] float DetectRadius = 5;
 	[SerializeField] float ChaseRadius = 20;
-	[SerializeField] bool HasRangedAttack;
 	[SerializeField] float FireCooldown = 1;
+	[SerializeField] bool HasRangedAttack;
+	[SerializeField] int DamagePerRangeAttack = 4;
+	[SerializeField] float RangeAttackRadius = 16;
 	[SerializeField] GameObject Projectile;
 	[SerializeField] Vector3 AimOffset = new Vector3(0, 1, 0);
 

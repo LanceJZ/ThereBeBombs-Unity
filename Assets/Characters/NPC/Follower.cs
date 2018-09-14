@@ -43,14 +43,14 @@ public class Follower : MonoBehaviour, IDamagable
 
         if (distToPlayer >= FollowRadius)
         {
-            print("Follower moves to within Healing Radius.");
+            //print("Follower moves to within Healing Radius.");
             AIControl.SetTarget(ThePlayer.transform);
             WithinRange = false;
         }
         else
         {
+            //print("Follower within Healing Radius.");
             AIControl.SetTarget(transform);
-            print("Follower within Healing Radius.");
             WithinRange = true;
         }
 

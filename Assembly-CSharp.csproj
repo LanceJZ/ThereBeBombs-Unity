@@ -74,7 +74,9 @@
     <Compile Include="Assets\Characters\NPC_UI.cs" />
     <Compile Include="Assets\Characters\Player\MyPlayerMovement.cs" />
     <Compile Include="Assets\Characters\Player\Player.cs" />
+    <Compile Include="Assets\Characters\WeaponHand.cs" />
     <Compile Include="Assets\Characters\Weapons\Projectile.cs" />
+    <Compile Include="Assets\Characters\Weapons\Weapon.cs" />
     <Compile Include="Assets\CourseStuff\RPG Character Animation Pack\Elements\ImageEffects\Scripts\Bloom.cs" />
     <Compile Include="Assets\CourseStuff\RPG Character Animation Pack\Elements\ImageEffects\Scripts\ImageEffectBase.cs" />
     <Compile Include="Assets\CourseStuff\RPG Character Animation Pack\Elements\ImageEffects\Scripts\ImageEffects.cs" />
@@ -85,7 +87,6 @@
     <Compile Include="Assets\CourseStuff\RPG Character Animation Pack\Elements\ImageEffects\Scripts\ScreenSpaceAmbientObscurance.cs" />
     <Compile Include="Assets\CourseStuff\RPG Character Animation Pack\Elements\ImageEffects\Scripts\ScreenSpaceAmbientOcclusion.cs" />
     <Compile Include="Assets\CourseStuff\RPG Character Animation Pack\Elements\ImageEffects\Scripts\Triangles.cs" />
-    <Compile Include="Assets\CourseStuff\Weapons\Weapon.cs" />
     <Compile Include="Assets\Store Assets\Standard Assets\2D\Scripts\Camera2DFollow.cs" />
     <Compile Include="Assets\Store Assets\Standard Assets\2D\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Store Assets\Standard Assets\2D\Scripts\Platformer2DUserControl.cs" />
